@@ -37,7 +37,7 @@ app.get('/aaa',function (req,res){
 
 
 var port =process.env.PORT || 3000;
-//app.listen(port); 
+app.listen(port); 
 app.use('/',express.static('./public')).listen(port);
 
 console.log("listening on port " + port +"\n");
