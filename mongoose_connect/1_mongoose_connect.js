@@ -5,10 +5,19 @@ var salarySchema2 = require('./schema_salary2').salarySchema2;
 var Classes = mongoose.model('Salary',salarySchema);
 var Classes2 = mongoose.model('Salary2',salarySchema2);
 
+// function updateGirls(callback)
+// {
+//   var girls = [];
+//   var query_female = User.find().where('gender','female');
+//   query_female.exec(function(err,female_result)
+//   {  
+//     callback(female_result);   
+//   });
+// }
 
-var answer1 = function(newUser){ 
+function answer1(newUser,callback){ 
 
-  console.log("im in addUser function");
+  console.log("im in answer1 function");
 
       var class_data = JSON.parse(newUser);
             var newtable = new Classes({
@@ -24,7 +33,7 @@ var answer1 = function(newUser){
              upper_class: class_data['upper_class'],
             });
 
-    console.log(newtable);
+    console.log("newtable1111111:  "+newtable);
 
     newtable.save(function (err, doc) {
                       if(err){
@@ -36,11 +45,13 @@ var answer1 = function(newUser){
                           // console.log('doc',doc);
                       }
                 });
-
+                 callback("succses");   
 }; 
     
 
-var answer2 = function(newUser){ 
+var answer2 = function(newUser,callback){ 
+
+  console.log("im in answer2 function");
 
       var class_data = JSON.parse(newUser);
             var newtable = new Classes2({
@@ -56,7 +67,7 @@ var answer2 = function(newUser){
              upper_class: class_data['upper_class'],
             });
 
-    console.log(newtable);
+    //console.log(newtable);
 
     newtable.save(function (err, doc) {
                       if(err){
@@ -68,11 +79,16 @@ var answer2 = function(newUser){
                           // console.log('doc',doc);
                       }
                 });
+                callback("succses");   
 
 }; 
 
 exports.answer1 = answer1;
 exports.answer2 = answer2;
+
+
+
+// exports.updateGirls = updateGirls;
 
 
 
